@@ -8,5 +8,6 @@ router.get("/:contactId", contactController.getContactById);
 router.post("/", contactController.createContact);
 router.delete("/:contactId", contactController.deleteContact);
 router.put("/:contactId", contactController.updateContact);
+router.patch("/:contactId", contactController.updateContactStatus)
 
 module.exports = router;
