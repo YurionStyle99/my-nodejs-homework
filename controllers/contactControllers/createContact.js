@@ -1,4 +1,4 @@
-const { Contact, schema } = require("../models/contact");
+const { Contact, schema } = require("../../models/contact");
 
 const createContact = async (req, res, next) => {
   const { name, email, phone } = req.body;
