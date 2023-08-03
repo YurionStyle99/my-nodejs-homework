@@ -1,5 +1,6 @@
 const { User, schemas } = require("../../models/user");
 const bcrypt = require("bcryptjs");
+const gravatar = require("gravatar");
 
 const registerUser = async (req, res, next) => {
   try {
@@ -15,6 +16,7 @@ const registerUser = async (req, res, next) => {
       return res.status(409).json({ message: "Email in use" });
     }
 
+    const avatarUrl = gravatar.url(email);
     const salt = await bcrypt.genSalt(10);
     const hashedPassword = await bcrypt.hash(password, salt);
 
@@ -23,6 +25,7 @@ const registerUser = async (req, res, next) => {
       password: hashedPassword,
       subscription,
       token,
+      avatarUrl,
     });
 
     res.status(201).json({
